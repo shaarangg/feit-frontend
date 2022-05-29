@@ -17,19 +17,27 @@ function RightSignUp() {
     const navigate = useNavigate();
 
     const sendOtp = async () => {
-        const res = await axios.post(
-            "https://api.myserenity.live/org/sendOtp",
-            {
-                phone: company.phone,
-            },
-            {
-                headers: {
-                    "Content-Type": "application/json",
+        try {
+            const res = await axios.post(
+                "https://api.myserenity.live/org/sendOtp",
+                {
+                    phone: company.phone,
                 },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+            if (res.data.success) {
+                setShowForm([false, false, true]);
+            } else {
+                alert(res.data.message);
             }
-        );
-        console.log(res);
-        setShowForm([false, false, true]);
+        } catch (e) {
+            console.log(e);
+            alert("User already exists");
+        }
     };
 
     const validateOtp = async () => {
