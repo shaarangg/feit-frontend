@@ -1,4 +1,4 @@
-function LeftSignUp() {
+function LeftSignUpCustomer() {
     return (
         <div className="leftSignUpContainer">
             <img src="../../assets/arranging-files.png" alt="sign up" />
@@ -6,4 +6,4 @@ function LeftSignUp() {
         </div>
     );
 }
-export default LeftSignUp;
+export default LeftSignUpCustomer;

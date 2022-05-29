@@ -1,5 +1,5 @@
-import RightSignUp from "../components/RightSignUp";
-import LeftSignUp from "../components/LeftSignUp";
+import RightSignUpCustomer from "../components/RightSignUpCustomer";
+import LeftSignUpCustomer from "../components/LeftSignUpCustomer";
 import { NavLink, Link } from "react-router-dom";
 function Register() {
     return (
@@ -8,8 +8,8 @@ function Register() {
                 <p>F</p>
             </Link>
             <div className="registerContainer">
-                <LeftSignUp />
-                <RightSignUp />
+                <LeftSignUpCustomer />
+                <RightSignUpCustomer />
             </div>
         </>
     );

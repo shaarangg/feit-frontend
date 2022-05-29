@@ -267,3 +267,23 @@
         }
     }
 }
+.homeBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 30px;
+    height: 30px;
+    background-color: #171923;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 2px 5px 5px 0px rgba(0, 0, 0, 0.5);
+    p {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #4fd1c5;
+    }
+}

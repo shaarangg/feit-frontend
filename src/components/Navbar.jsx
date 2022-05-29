@@ -36,16 +36,16 @@ function Navbar() {
                 <NavLink to="/" onClick={closeLinks}>
                     Home
                 </NavLink>
-                <Link to="/api" className="toggleNavEnd" onClick={closeLinks}>
+                <Link to="/customerRegister" className="toggleNavEnd" onClick={closeLinks}>
                     Customer Sign In
                 </Link>
-                <Link to="/api" className="toggleNavEnd" onClick={closeLinks}>
+                <Link to="/customer" className="toggleNavEnd" onClick={closeLinks}>
                     Customer Log In
                 </Link>
-                <Link to="/api" className="toggleNavEnd" onClick={closeLinks}>
+                <Link to="/register" className="toggleNavEnd" onClick={closeLinks}>
                     Company Sign In
                 </Link>
-                <Link to="/api" className="toggleNavEnd" onClick={closeLinks}>
+                <Link to="/company" className="toggleNavEnd" onClick={closeLinks}>
                     Company Log In
                 </Link>
             </div>
