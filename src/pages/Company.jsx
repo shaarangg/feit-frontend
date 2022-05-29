@@ -1,12 +1,19 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Cookies from "universal-cookie";
+import { useNavigate } from "react-router-dom";
 function Company() {
-    const [sin, setSin] = useState("");
     const cookies = new Cookies();
+    const token = cookies.get("token");
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (!token) {
+            navigate("/company");
+        }
+    }, []);
+    const [sin, setSin] = useState("");
     const registerProduct = async () => {
         const phone = cookies.get("phone");
-        const token = cookies.get("token");
         console.log(token);
         console.log(phone);
         try {
