@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { AiOutlineUser } from "react-icons/ai";
-import { GrOrganization } from "react-icons/gr";
 import { RiOrganizationChart } from "react-icons/ri";
 import { GiConfirmed } from "react-icons/gi";
 function RightSignUp() {
@@ -11,17 +10,18 @@ function RightSignUp() {
         email: "",
         mobile: "",
     });
+    const [showForm, setShowForm] = useState([true, false, false]);
     return (
         <div className="rightSignUpContainer">
-            <div>sign in with simple steps</div>
-            <div className="comp">
+            <h1>Sign in with 3 simple steps</h1>
+            <div className="comp" onClick={() => setShowForm([true, false, false])}>
                 <div className="peak">
                     <div className="icontainer">
                         <RiOrganizationChart />
                     </div>
                     <h3>Company Information</h3>
                 </div>
-                <div className="form">
+                <div className={`form ${showForm[0] ? "remove" : ""}`}>
                     <div className="form-fields">
                         <label htmlFor="cname">Company Name</label>
                         <input type="text" name="cname" id="cname" onChange={(e) => setUser({ ...user, cname: e.target.value })} value={user.cname} />
@@ -45,17 +45,17 @@ function RightSignUp() {
                             <option>Other</option>
                         </select>
                     </div>
-                    <button>Next</button>
                 </div>
+                <button>Next</button>
             </div>
-            <div className="comp">
+            <div className="comp" onClick={() => setShowForm([false, true, false])}>
                 <div className="peak">
                     <div className="icontainer">
                         <AiOutlineUser />
                     </div>
                     <h3>Personal Information</h3>
                 </div>
-                <div className="form">
+                <div className={`form ${showForm[1] ? "remove" : ""}`}>
                     <div className="form-fields">
                         <label htmlFor="ename">Name</label>
                         <input type="text" name="ename" id="ename" onChange={(e) => setUser({ ...user, ename: e.target.value })} value={user.ename} />
@@ -68,27 +68,27 @@ function RightSignUp() {
                         <label htmlFor="number">Mobile No.</label>
                         <input type="tel" name="number" id="number" onChange={(e) => setUser({ ...user, mobile: e.target.value })} value={user.mobile} />
                     </div>
-                    <button>Next</button>
                 </div>
+                <button>Next</button>
             </div>
-            <div className="comp">
+            <div className="comp" onClick={() => setShowForm([false, false, true])}>
                 <div className="peak">
                     <div className="icontainer">
                         <GiConfirmed />
                     </div>
                     <h3>Confirm Account</h3>
                 </div>
-                <div className="form">
+                <div className={`form ${showForm[2] ? "remove" : ""}`}>
                     <div className="form-fields">
                         <label htmlFor="otpe">Enter otp sent on email</label>
                         <input type="number" name="otpe" id="otpe" />
                     </div>
                     <div className="form-fields">
-                        <label htmlFor="otpn">enter otp sent on email</label>
+                        <label htmlFor="otpn">Enter otp sent on phone</label>
                         <input type="number" name="otpn" id="otpn" />
-                        <button>Next</button>
                     </div>
                 </div>
+                <button>Next</button>
             </div>
         </div>
     );
