@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "../styles/Register.module.scss";
+import { AiOutlineUser } from "react-icons/ai";
 function RightSignUp() {
     const [user, setUser] = useState({
         cname: "",
@@ -9,14 +9,16 @@ function RightSignUp() {
         mobile: "",
     });
     return (
-        <div>
+        <div className="rightSignUpContainer">
             <div>sign in with simple steps</div>
-            <div className={styles.comp}>
-                <div className={styles.peak}>
-                    <div>img</div>
+            <div className="comp">
+                <div className="peak">
+                    <div className="icontainer">
+                        <AiOutlineUser />
+                    </div>
                     <div>Company Information</div>
                 </div>
-                <div className={styles.form}>
+                <div className="form">
                     <label htmlFor="cname">Company Name</label>
                     <input type="text" name="cname" id="cname" onChange={(e) => setUser({ ...user, cname: e.target.value })} value={user.cname} />
                     <label htmlFor="ctype">Type of Company</label>
@@ -39,12 +41,12 @@ function RightSignUp() {
                     <button>Next</button>
                 </div>
             </div>
-            <div className={styles.comp}>
-                <div className={styles.peak}>
+            <div className="comp">
+                <div className="peak">
                     <div>img</div>
                     <div>Personal Information</div>
                 </div>
-                <div className={styles.form}>
+                <div className="form">
                     <label htmlFor="ename">Name</label>
                     <input type="text" name="ename" id="ename" onChange={(e) => setUser({ ...user, ename: e.target.value })} value={user.ename} />
                     <label htmlFor="email">Email ID</label>
@@ -54,12 +56,12 @@ function RightSignUp() {
                     <button>Next</button>
                 </div>
             </div>
-            <div className={styles.comp}>
-                <div className={styles.peak}>
+            <div className="comp">
+                <div className="peak">
                     <div>img</div>
                     <div>Confirm Account</div>
                 </div>
-                <div className={styles.form}>
+                <div className="form">
                     <label htmlFor="otpe">Enter otp sent on email</label>
                     <input type="number" name="otpe" id="otpe" />
                     <label htmlFor="otpn">enter otp sent on email</label>

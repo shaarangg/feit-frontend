@@ -1,38 +1,56 @@
-.App {
-  text-align: center;
+.registerContainer {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 2fr 3fr;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.leftSignUpContainer {
+    display: flex;
+    flex-flow: column;
+    background-color: #1a202c;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    img {
+        width: 60%;
+        max-width: 900px;
+    }
+    .text {
+        color: #f5f6f7;
+        font-size: 2rem;
+        font-weight: 800;
+    }
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.rightSignUpContainer {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    font-size: 1.5rem;
+    background-color: #171923;
+    .comp {
+        display: flex;
+        flex-flow: column;
+        gap: 2rem;
+        padding: 1rem;
+        background-color: #343434;
+        .peak {
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
+            .icontainer {
+                border-radius: 50%;
+                background-color: #4ec8ca;
+                width: 25x;
+                height: 25px;
+                svg {
+                    color: #f5f6f7;
+                }
+            }
+        }
+        .form {
+            display: flex;
+            flex-flow: column;
+        }
+    }
 }
