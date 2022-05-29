@@ -21,7 +21,7 @@ function Company() {
             });
             alert(res.data.message);
         } catch (e) {
-            console.log(e);
+            alert("Product has already been registered");
         }
     };
     return (

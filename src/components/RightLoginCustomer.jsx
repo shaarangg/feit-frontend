@@ -21,7 +21,7 @@ function RightLoginInCustomer() {
                 alert(res.data.message);
             }
         } catch (e) {
-            console.log(e);
+            alert("Invalid Credentials");
         }
     };
     return (

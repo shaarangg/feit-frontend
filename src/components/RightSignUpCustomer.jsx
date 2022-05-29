@@ -13,19 +13,23 @@ function RightSignUp() {
     const [showForm, setShowForm] = useState([true, false]);
     const navigate = useNavigate();
     const sendOtp = async () => {
-        const res = await axios.post(
-            "https://api.myserenity.live/user/sendOtp",
-            {
-                phone: user.phone,
-            },
-            {
-                headers: {
-                    "Content-Type": "application/json",
+        try {
+            const res = await axios.post(
+                "https://api.myserenity.live/user/sendOtp",
+                {
+                    phone: user.phone,
                 },
-            }
-        );
-        console.log(res);
-        setShowForm([false, true]);
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+            console.log(res);
+            setShowForm([false, true]);
+        } catch (e) {
+            alert("Invalid Inputs");
+        }
     };
 
     const validateOtp = async () => {

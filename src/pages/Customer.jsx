@@ -5,7 +5,6 @@ function Customer() {
     const [sin, setSin] = useState("");
     const cookies = new Cookies();
     const registerProduct = async () => {
-        console.log("clicked");
         const phone = cookies.get("phone");
         const token = cookies.get("token");
         console.log(token);
@@ -22,7 +21,7 @@ function Customer() {
             });
             alert(res.data.message);
         } catch (e) {
-            console.log(e);
+            alert("Product has already been registered");
         }
     };
     return (
