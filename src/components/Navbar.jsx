@@ -7,11 +7,6 @@ function Navbar() {
     const closeLinks = () => {
         setShowLinks(false);
     };
-    const activeStyle = ({ isActive }) => {
-        return {
-            color: isActive ? "#f3a4cc" : "",
-        };
-    };
     useEffect(() => {
         if (showLinks) {
             navCenterContainer.current.style.height = `100vh`;
@@ -26,7 +21,7 @@ function Navbar() {
         <nav className="nav">
             <div className="navHead">
                 <Link to="/" className="logo">
-                    Serenity.js
+                    The Feit
                 </Link>
                 <button
                     className="navToggle"
@@ -38,22 +33,20 @@ function Navbar() {
                 </button>
             </div>
             <div className="navCenter" ref={navCenterContainer}>
-                <NavLink to="/" style={activeStyle} onClick={closeLinks}>
+                <NavLink to="/" onClick={closeLinks}>
                     Home
                 </NavLink>
-                <NavLink to="/docs" style={activeStyle} onClick={closeLinks}>
-                    Documentation
-                </NavLink>
-                <NavLink to="/contact" style={activeStyle} onClick={closeLinks}>
-                    Contact Us
-                </NavLink>
                 <Link to="/api" className="toggleNavEnd" onClick={closeLinks}>
-                    Test Api
+                    Customer Sign In
                 </Link>
-            </div>
-            <div className="navEnd">
-                <Link to="/api" onClick={closeLinks}>
-                    Test API
+                <Link to="/api" className="toggleNavEnd" onClick={closeLinks}>
+                    Customer Log In
+                </Link>
+                <Link to="/api" className="toggleNavEnd" onClick={closeLinks}>
+                    Company Sign In
+                </Link>
+                <Link to="/api" className="toggleNavEnd" onClick={closeLinks}>
+                    Company Log In
                 </Link>
             </div>
         </nav>
