@@ -1,10 +1,29 @@
 import { useState } from "react";
 import { AiOutlineUser } from "react-icons/ai";
+import axios from "axios";
+import Cookies from "universal-cookie";
+import { useNavigate } from "react-router-dom";
 function RightLoginInCustomer() {
     const [user, setUser] = useState({
         password: "",
         phone: "",
     });
+    const cookie = new Cookies();
+    const navigate = useNavigate();
+    const login = async () => {
+        try {
+            const res = await axios.post("https://api.myserenity.live/user/login", user);
+            if (res.data.success) {
+                cookie.set("phone", user.phone);
+                cookie.set("token", res.data.token);
+                navigate("/customerdashboard");
+            } else {
+                alert(res.data.message);
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    };
     return (
         <div className="rightSignUpContainer">
             <h1>Login as user</h1>
@@ -25,7 +44,7 @@ function RightLoginInCustomer() {
                         <input type="password" name="password" id="password" onChange={(e) => setUser({ ...user, password: e.target.value })} value={user.pasword} />
                     </div>
                 </div>
-                <button>Next</button>
+                <button onClick={login}>Next</button>
             </div>
         </div>
     );
