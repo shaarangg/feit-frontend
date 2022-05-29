@@ -2,8 +2,10 @@ import { useState } from "react";
 import { AiOutlineUser } from "react-icons/ai";
 import { RiOrganizationChart } from "react-icons/ri";
 import { GiConfirmed } from "react-icons/gi";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 function RightSignUp() {
-    const [user, setUser] = useState({
+    const [company, setCompany] = useState({
         companyName: "",
         typeOfBusiness: "",
         employeeName: "",
@@ -12,6 +14,38 @@ function RightSignUp() {
         otp: "",
     });
     const [showForm, setShowForm] = useState([true, false, false]);
+    const navigate = useNavigate();
+
+    const sendOtp = async () => {
+        const res = await axios.post(
+            "https://api.myserenity.live/org/sendOtp",
+            {
+                phone: company.phone,
+            },
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
+        );
+        console.log(res);
+        setShowForm([false, false, true]);
+    };
+
+    const validateOtp = async () => {
+        const res = await axios.post("https://api.myserenity.live/org/signup", company, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        if (res.data.success) {
+            navigate("/company");
+        } else {
+            alert(res.data.message);
+        }
+        console.log(res);
+    };
+
     return (
         <div className="rightSignUpContainer">
             <h1>Sign in with 3 simple steps</h1>
@@ -25,11 +59,11 @@ function RightSignUp() {
                 <div className={`form ${showForm[0] ? "remove" : ""}`}>
                     <div className="form-fields">
                         <label htmlFor="companyName">Company Name</label>
-                        <input type="text" name="companyName" id="companyName" onChange={(e) => setUser({ ...user, companyName: e.target.value })} value={user.companyName} />
+                        <input type="text" name="companyName" id="companyName" onChange={(e) => setCompany({ ...company, companyName: e.target.value })} value={company.companyName} />
                     </div>
                     <div className="form-fields">
                         <label htmlFor="typeOfBusiness">Type of Company</label>
-                        <select id="typeOfBusiness" name="typeOfBusiness" onChange={(e) => setUser({ ...user, typeOfBusiness: e.target.value })} value={user.typeOfBusiness}>
+                        <select id="typeOfBusiness" name="typeOfBusiness" onChange={(e) => setCompany({ ...company, typeOfBusiness: e.target.value })} value={company.typeOfBusiness}>
                             <option>Apparel / Undergarments</option>
                             <option>Education</option>
                             <option>Electronics</option>
@@ -47,7 +81,7 @@ function RightSignUp() {
                         </select>
                     </div>
                 </div>
-                <button>Next</button>
+                <button onClick={() => setShowForm([false, true, false])}>Next</button>
             </div>
             <div className="comp" onClick={() => setShowForm([false, true, false])}>
                 <div className="peak">
@@ -59,18 +93,18 @@ function RightSignUp() {
                 <div className={`form ${showForm[1] ? "remove" : ""}`}>
                     <div className="form-fields">
                         <label htmlFor="employeeName">Name</label>
-                        <input type="text" name="employeeName" id="employeeName" onChange={(e) => setUser({ ...user, employeeName: e.target.value })} value={user.employeeName} />
+                        <input type="text" name="employeeName" id="employeeName" onChange={(e) => setCompany({ ...company, employeeName: e.target.value })} value={company.employeeName} />
                     </div>
                     <div className="form-fields">
                         <label htmlFor="password">Password</label>
-                        <input type="password" name="password" id="password" onChange={(e) => setUser({ ...user, password: e.target.value })} value={user.pasword} />
+                        <input type="password" name="password" id="password" onChange={(e) => setCompany({ ...company, password: e.target.value })} value={company.pasword} />
                     </div>
                     <div className="form-fields">
                         <label htmlFor="phone">Mobile No.</label>
-                        <input type="tel" name="phone" id="number" onChange={(e) => setUser({ ...user, phone: e.target.value })} value={user.phone} />
+                        <input type="tel" name="phone" id="number" onChange={(e) => setCompany({ ...company, phone: e.target.value })} value={company.phone} />
                     </div>
                 </div>
-                <button>Next</button>
+                <button onClick={sendOtp}>Next</button>
             </div>
             <div className="comp" onClick={() => setShowForm([false, false, true])}>
                 <div className="peak">
@@ -82,10 +116,10 @@ function RightSignUp() {
                 <div className={`form ${showForm[2] ? "remove" : ""}`}>
                     <div className="form-fields">
                         <label htmlFor="otp">Enter otp sent on phone</label>
-                        <input type="number" name="otp" id="otp" onChange={(e) => setUser({ ...user, otp: e.target.value })} value={user.otp} />
+                        <input type="number" name="otp" id="otp" onChange={(e) => setCompany({ ...company, otp: e.target.value })} value={company.otp} />
                     </div>
                 </div>
-                <button>Next</button>
+                <button onClick={validateOtp}>Submit</button>
             </div>
         </div>
     );

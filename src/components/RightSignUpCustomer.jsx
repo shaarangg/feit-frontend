@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { AiOutlineUser } from "react-icons/ai";
-import { RiOrganizationChart } from "react-icons/ri";
 import { GiConfirmed } from "react-icons/gi";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 function RightSignUp() {
     const [user, setUser] = useState({
         name: "",
@@ -10,6 +11,36 @@ function RightSignUp() {
         otp: "",
     });
     const [showForm, setShowForm] = useState([true, false]);
+    const navigate = useNavigate();
+    const sendOtp = async () => {
+        const res = await axios.post(
+            "https://api.myserenity.live/user/sendOtp",
+            {
+                phone: user.phone,
+            },
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
+        );
+        console.log(res);
+        setShowForm([false, true]);
+    };
+
+    const validateOtp = async () => {
+        const res = await axios.post("https://api.myserenity.live/user/signup", user, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        if (res.data.success) {
+            navigate("/customer");
+        } else {
+            alert(res.data.message);
+        }
+        console.log(res);
+    };
     return (
         <div className="rightSignUpContainer">
             <h1>Sign in with 3 simple steps</h1>
@@ -34,7 +65,7 @@ function RightSignUp() {
                         <input type="tel" name="phone" id="number" onChange={(e) => setUser({ ...user, phone: e.target.value })} value={user.phone} />
                     </div>
                 </div>
-                <button>Next</button>
+                <button onClick={sendOtp}>Next</button>
             </div>
             <div className="comp" onClick={() => setShowForm([false, true])}>
                 <div className="peak">
@@ -49,7 +80,7 @@ function RightSignUp() {
                         <input type="number" name="otp" id="otp" onChange={(e) => setUser({ ...user, otp: e.target.value })} value={user.otp} />
                     </div>
                 </div>
-                <button>Next</button>
+                <button onClick={validateOtp}>Submit</button>
             </div>
         </div>
     );

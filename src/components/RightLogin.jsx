@@ -2,14 +2,12 @@ import { useState } from "react";
 import { AiOutlineUser } from "react-icons/ai";
 function RightLoginIn() {
     const [user, setUser] = useState({
-        name: "",
         password: "",
         phone: "",
-        otp: "",
     });
     return (
         <div className="rightSignUpContainer">
-            <h1>Login as user</h1>
+            <h1>Login as organization</h1>
             <div className="comp">
                 <div className="peak">
                     <div className="icontainer">
