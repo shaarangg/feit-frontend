@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AiOutlineUser } from "react-icons/ai";
-function RightLoginIn() {
+function RightLoginInCustomer() {
     const [user, setUser] = useState({
         name: "",
         password: "",
@@ -33,4 +33,4 @@ function RightLoginIn() {
     );
 }
 
-export default RightLoginIn;
+export default RightLoginInCustomer;

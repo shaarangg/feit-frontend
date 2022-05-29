@@ -1,5 +1,5 @@
-import RightLogin from "../components/RightLogin";
-import LeftLogin from "../components/LeftLogin";
+import RightLoginCustomer from "../components/RightLoginCustomer";
+import LeftLoginCustomer from "../components/LeftLoginCustomer";
 import { Link } from "react-router-dom";
 function Register() {
     return (
@@ -8,8 +8,8 @@ function Register() {
                 <p>F</p>
             </Link>
             <div className="registerContainer">
-                <LeftLogin />
-                <RightLogin />
+                <LeftLoginCustomer />
+                <RightLoginCustomer />
             </div>
         </>
     );
