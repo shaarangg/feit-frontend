@@ -4,11 +4,12 @@ import { RiOrganizationChart } from "react-icons/ri";
 import { GiConfirmed } from "react-icons/gi";
 function RightSignUp() {
     const [user, setUser] = useState({
-        cname: "",
-        ctype: "",
-        ename: "",
-        email: "",
-        mobile: "",
+        companyName: "",
+        typeOfBusiness: "",
+        employeeName: "",
+        password: "",
+        phone: "",
+        otp: "",
     });
     const [showForm, setShowForm] = useState([true, false, false]);
     return (
@@ -23,12 +24,12 @@ function RightSignUp() {
                 </div>
                 <div className={`form ${showForm[0] ? "remove" : ""}`}>
                     <div className="form-fields">
-                        <label htmlFor="cname">Company Name</label>
-                        <input type="text" name="cname" id="cname" onChange={(e) => setUser({ ...user, cname: e.target.value })} value={user.cname} />
+                        <label htmlFor="companyName">Company Name</label>
+                        <input type="text" name="companyName" id="companyName" onChange={(e) => setUser({ ...user, companyName: e.target.value })} value={user.companyName} />
                     </div>
                     <div className="form-fields">
-                        <label htmlFor="ctype">Type of Company</label>
-                        <select id="ctype" name="ctype" onChange={(e) => setUser({ ...user, ctype: e.target.value })} value={user.ctype}>
+                        <label htmlFor="typeOfBusiness">Type of Company</label>
+                        <select id="typeOfBusiness" name="typeOfBusiness" onChange={(e) => setUser({ ...user, typeOfBusiness: e.target.value })} value={user.typeOfBusiness}>
                             <option>Apparel / Undergarments</option>
                             <option>Education</option>
                             <option>Electronics</option>
@@ -57,16 +58,16 @@ function RightSignUp() {
                 </div>
                 <div className={`form ${showForm[1] ? "remove" : ""}`}>
                     <div className="form-fields">
-                        <label htmlFor="ename">Name</label>
-                        <input type="text" name="ename" id="ename" onChange={(e) => setUser({ ...user, ename: e.target.value })} value={user.ename} />
+                        <label htmlFor="employeeName">Name</label>
+                        <input type="text" name="employeeName" id="employeeName" onChange={(e) => setUser({ ...user, employeeName: e.target.value })} value={user.employeeName} />
                     </div>
                     <div className="form-fields">
-                        <label htmlFor="email">Email ID</label>
-                        <input type="email" name="email" id="email" onChange={(e) => setUser({ ...user, email: e.target.value })} value={user.email} />
+                        <label htmlFor="password">Password</label>
+                        <input type="password" name="password" id="password" onChange={(e) => setUser({ ...user, password: e.target.value })} value={user.pasword} />
                     </div>
                     <div className="form-fields">
-                        <label htmlFor="number">Mobile No.</label>
-                        <input type="tel" name="number" id="number" onChange={(e) => setUser({ ...user, mobile: e.target.value })} value={user.mobile} />
+                        <label htmlFor="phone">Mobile No.</label>
+                        <input type="tel" name="phone" id="number" onChange={(e) => setUser({ ...user, phone: e.target.value })} value={user.phone} />
                     </div>
                 </div>
                 <button>Next</button>
@@ -80,12 +81,8 @@ function RightSignUp() {
                 </div>
                 <div className={`form ${showForm[2] ? "remove" : ""}`}>
                     <div className="form-fields">
-                        <label htmlFor="otpe">Enter otp sent on email</label>
-                        <input type="number" name="otpe" id="otpe" />
-                    </div>
-                    <div className="form-fields">
-                        <label htmlFor="otpn">Enter otp sent on phone</label>
-                        <input type="number" name="otpn" id="otpn" />
+                        <label htmlFor="otp">Enter otp sent on phone</label>
+                        <input type="number" name="otp" id="otp" onChange={(e) => setUser({ ...user, otp: e.target.value })} value={user.otp} />
                     </div>
                 </div>
                 <button>Next</button>

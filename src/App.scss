@@ -99,3 +99,90 @@
         display: flex !important;
     }
 }
+.homeContainer {
+    margin: 1.5rem 0;
+    .title {
+        font-size: 2rem;
+        text-align: center;
+        font-weight: 1000;
+    }
+    .content {
+        max-width: 450px;
+        margin: 0rem auto;
+        margin-top: 1rem;
+        text-align: center;
+        font-size: 0.875rem;
+        line-height: 1.5rem;
+        padding: 1.5rem 1rem;
+    }
+    .btnContainer {
+        display: flex;
+        gap: 1.5rem;
+        flex-flow: column;
+        align-items: center;
+        margin-top: 2rem;
+    }
+    .Docsbtn {
+        width: 200px;
+        padding: 1rem 2rem;
+        border-radius: 2px;
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 600;
+        background-color: white;
+        box-shadow: white;
+        text-align: center;
+        cursor: pointer;
+    }
+    .Apibtn {
+        width: 200px;
+        padding: 1rem 2rem;
+        border-radius: 2px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        background-color: white;
+        box-shadow: black;
+        text-align: center;
+        cursor: pointer;
+    }
+}
+@media screen and (min-width: 700px) {
+    .homeContainer {
+        max-width: 1140px;
+        margin: 5rem auto;
+        .title {
+            font-size: 5rem;
+            text-align: center;
+            font-weight: 1000;
+        }
+        .content {
+            max-width: 900px;
+            margin-top: 1rem;
+            text-align: center;
+            font-size: 1.25rem;
+            line-height: 2rem;
+            padding: 1.5rem 1rem;
+        }
+        .btnContainer {
+            display: flex;
+            flex-flow: row;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        .Docsbtn {
+            margin-top: 0rem;
+            &:hover {
+                background-color: white;
+                box-shadow: white;
+            }
+        }
+        .Apibtn {
+            &:hover {
+                box-shadow: white;
+                background-color: white;
+            }
+        }
+    }
+}
