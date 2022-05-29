@@ -1,11 +1,16 @@
-import logo from "./logo.svg";
 import "./App.scss";
-// import Register from "./pages/Register";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Register from "./pages/Register";
 import Home from "./pages/Home";
 function App() {
     return (
         <div className="App">
-            <Home />
+            <BrowserRouter>
+                <Routes>
+                    <Route exact path="/" element={<Home />} />
+                    <Route exact path="/rewgister" element={<Register />} />
+                </Routes>
+            </BrowserRouter>
         </div>
     );
 }
